@@ -21,6 +21,10 @@ def guardar_cita(nueva_cita):
     with open(DATA_FILE, 'w') as f:
         json.dump(citas, f, indent=4)
 
+        @app.route('/')
+        def home():
+            return render_template('index.html')
+
 
 @app.route('/agendar', methods=['POST'])
 def agendar():
