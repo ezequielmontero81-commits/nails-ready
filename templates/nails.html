@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nails Studio | Reserva Tu Cita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-pink: #ff85a1;
+            --dark-pink: #f06292;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: #0f0f0f;
+            background-image: radial-gradient(circle at top right, #2d1b22, #0f0f0f);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding-bottom: 50px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--main-pink);
+            text-transform: uppercase;
+        }
+
+        /* Sección de Catálogo */
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .nail-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .nail-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .nail-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .price {
+            color: var(--main-pink);
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Formulario de Citas */
+        .booking-section {
+            background: var(--glass);
+            margin: 20px;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid var(--main-pink);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .btn-reserve {
+            width: 100%;
+            background: var(--main-pink);
+            color: black;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-reserve:hover {
+            background: var(--dark-pink);
+            box-shadow: 0 0 20px var(--main-pink);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Elite Nails RD</div>
+        <p style="font-size: 0.9rem; opacity: 0.7;">Reserva tu estilo favorito</p>
+    </header>
+
+    <div class="catalog">
+        <!-- Diseño 1 -->
+        <div class="nail-card">
+            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=300&auto=format" alt="Uñas Acrílicas">
+            <div class="nail-info">
+                <span>Acrílicas Sencillas</span>
+                <span class="price">RD$ 800</span>
+            </div>
+        </div>
+
+        <!-- Diseño 2 -->
+        <div class="nail-card">
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=300&auto=format" alt="Uñas Diseño">
+            <div class="nail-info">
+                <span>Diseño Premium</span>
+                <span class="price">RD$ 1,200</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="booking-section">
+        <h2 style="text-align: center; font-size: 1.2rem;">AGENDA TU CITA</h2>
+
+        <label>Tu Nombre</label>
+        <input type="text" id="nombre" placeholder="Ej. Maria Lopez">
+
+        <label>Servicio deseado</label>
+        <select id="servicio">
+            <option>Acrílicas Sencillas</option>
+            <option>Diseño Premium</option>
+            <option>Retoque</option>
+            <option>Pedicura</option>
+        </select>
+
+        <label>Fecha</label>
+        <input type="date" id="fecha">
+
+        <label>Hora</label>
+        <input type="time" id="hora">
+
+        <button class="btn-reserve" onclick="enviarReserva()">CONFIRMAR CITA</button>
+    </div>
+
+    <script>
+        function enviarReserva() {
+            const nombre = document.getElementById('nombre').value;
+            const servicio = document.getElementById('servicio').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+
+            if(!nombre || !fecha || !hora) {
+                alert("Por favor llena todos los datos");
+                return;
+            }
+
+            alert(`¡Gracias ${nombre}! Tu cita para ${servicio} ha sido enviada.`);
+            // Aquí es donde conectarás esto con tu Python/Flask
+        }
+    </script>
+
+</body>
+</html>
